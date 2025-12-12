@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0424\u043B\u0430\u0433 \u0417\u0430\u0445\u0432\u0430\u0442\u0447\u0438\u043A\u043E\u0432_0"
+      name: InvaderFlag
       rect:
         serializedVersion: 2
         x: 15
@@ -147,7 +147,7 @@ TextureImporter:
         width: 98
         height: 114
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4cbb8f3acccac7e4880e059300c51ff3
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u0424\u043B\u0430\u0433 \u0417\u0430\u0445\u0432\u0430\u0442\u0447\u0438\u043A\u043E\u0432_0": 6607775517334666096
+      InvaderFlag: 6607775517334666096
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

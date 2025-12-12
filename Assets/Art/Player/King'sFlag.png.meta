@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0424\u043B\u0430\u0433 \u041A\u043E\u0440\u043E\u043B\u044F_0"
+      name: King'sFlag
       rect:
         serializedVersion: 2
         x: 15
@@ -147,7 +147,7 @@ TextureImporter:
         width: 98
         height: 114
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b60acf1a52a65884b800ba61f8114763
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u0424\u043B\u0430\u0433 \u041A\u043E\u0440\u043E\u043B\u044F_0": 7301738268825646753
+      King'sFlag: 7301738268825646753
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
