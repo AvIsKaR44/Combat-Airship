@@ -9,32 +9,21 @@ using System.Collections;
         [Header("Space ship")]
         [SerializeField] private float m_Mass;
 
-        /// <summary>
-        /// ��������� ������ ����.
-        /// </summary>
+        
         [SerializeField] private float m_Thrust;
 
-        /// <summary>
-        /// ��������� ����.
-        /// </summary>
+        
         [SerializeField] private float m_Mobility;
 
-        /// <summary>
-        /// ������������ �������� ��������.
-        /// </summary>
+        
         [SerializeField] private float m_MaxLinearVelocity;
 
-        /// <summary>
-        /// ������������ ������������ ��������. � ��������/���.
-        /// </summary>
+        
         [SerializeField] private float m_MaxAngularVelocity;
 
         [Header("VFX Settings")]
-        [SerializeField] private ParticleSystem m_ExplosionEffect; // ������ ������� ������
+        [SerializeField] private ParticleSystem m_ExplosionEffect; 
 
-        /// <summary>
-        /// ����������� ������ �� �����.
-        /// </summary>
         private Rigidbody2D m_Rigid;
 
         public float MaxLianerVelocity => m_MaxLinearVelocity;
@@ -170,10 +159,7 @@ using System.Collections;
         }
 
         #endregion
-
-        /// <summary>
-        /// ����� ���������� ��� ������� ��� ��������.
-        /// </summary>
+            
         private void UpdateRigidBody()
         {
             if (float.IsNaN(TorqueControl))
@@ -197,50 +183,42 @@ using System.Collections;
         }
 
         protected override void OnDeath()
-        {
-            // �������� ������� ������
+        {            
             if (m_ExplosionEffect != null)
             {
                 var effect = Instantiate(m_ExplosionEffect, transform.position, transform.rotation);
-
-                // ����� ��������� � �������������� ������
+                           
                 var mainModule = effect.main;
                 effect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 effect.Play();
 
                 Destroy(effect.gameObject, mainModule.duration + mainModule.startLifetime.constantMax);
             }
-
-            // ���������� ���������� ���� �����������
+                        
             Collider2D[] allColliders = GetComponentsInChildren<Collider2D>();
             foreach (Collider2D col in allColliders)
             {
                 col.enabled = false;
             }
-
-            // ���������� ���������� ������������
+                        
             Renderer[] allRenderers = GetComponentsInChildren<Renderer>();
             foreach (Renderer rend in allRenderers)
             {
                 rend.enabled = false;
             }
-
-            // ��������� ������ (���� ���� Rigidbody)
+                        
             if (TryGetComponent(out Rigidbody2D rb))
             {
                 rb.simulated = false;
             }
 
-            // ������ �������� �����������
             StartCoroutine(DelayedDestruction(1.0f));
         }
 
         private IEnumerator DelayedDestruction(float delay)
         {
-            // ���� ���������� �������
             yield return new WaitForSeconds(delay);
 
-            // �������� ������� ������ �����������
             base.OnDeath();
         }
 
@@ -325,7 +303,6 @@ using System.Collections;
             if (m_Turrets == null || m_Turrets.Length == 0)
                 return m_DefaultProjectileSpeed;
 
-            // ���� ������ primary turret
             foreach (var turret in m_Turrets)
             {
                 if (turret != null && turret.Mode == TurretMode.Primary)
