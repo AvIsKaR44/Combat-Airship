@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7c7126b4e94ab614b93504a7dc129b2e
+guid: 6ae562366bf5fa2478aa77d395919065
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6387141827742192153
-    second: Gradient_0
+      213: -1695067396461546973
+    second: Balloon_3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gradient_0
+      name: Balloon_3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1680
-        height: 1050
+        x: 23
+        y: 4
+        width: 81
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ed236329505c57a0800000000000000
-      internalID: -6387141827742192153
+      spriteID: 322309b0f29e978e0800000000000000
+      internalID: -1695067396461546973
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Gradient_0: -6387141827742192153
+      Balloon_3_0: -1695067396461546973
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
