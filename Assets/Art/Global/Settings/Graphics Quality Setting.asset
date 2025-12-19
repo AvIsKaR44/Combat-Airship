@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04d9c5b5ac84064685bd3ad37823bd9, type: 3}
+  m_Name: Graphics Quality Setting
+  m_EditorClassIdentifier: 
+  title: Graphics Quality
+  qualityPipelineAssets:
+  - {fileID: 11400000, guid: 1677e1c0afa68c9489d5b334e86dadea, type: 2}
+  - {fileID: 11400000, guid: 73d24f9a835bcb5469fa508f2388ec7e, type: 2}
+  - {fileID: 11400000, guid: e181f18aa3b98944b83c3435ba182476, type: 2}
+  - {fileID: 11400000, guid: ae437b242c36ec24e804efa98e7867a5, type: 2}
+  - {fileID: 11400000, guid: 8a015da091057284ebf5bf4f3642095c, type: 2}
