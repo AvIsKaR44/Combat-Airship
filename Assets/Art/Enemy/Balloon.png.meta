@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0410\u044D\u0440\u043E\u0441\u0442\u0430\u0442_0"
+      name: Balloon
       rect:
         serializedVersion: 2
         x: 21
@@ -147,7 +147,7 @@ TextureImporter:
         width: 87
         height: 124
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 00b194b05a6d17e43b6a32c5245ea38a
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u0410\u044D\u0440\u043E\u0441\u0442\u0430\u0442_0": 7104504801857250921
+      Balloon: 7104504801857250921
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

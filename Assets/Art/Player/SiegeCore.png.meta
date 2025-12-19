@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u042F\u0434\u0440\u0430 \u0434\u043B\u044F \u0441\u0431\u0440\u0430\u0441\u044B\u0432\u0430\u043D\u0438\u044F_0"
+      name: SiegeCore
       rect:
         serializedVersion: 2
         x: 6
@@ -147,7 +147,7 @@ TextureImporter:
         width: 121
         height: 109
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 12e6c584aadc91244a7d1def2532cd54
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u042F\u0434\u0440\u0430 \u0434\u043B\u044F \u0441\u0431\u0440\u0430\u0441\u044B\u0432\u0430\u043D\u0438\u044F_0": -7860631004235539910
+      SiegeCore: -7860631004235539910
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
                 {
                     Player.Instance.AddScore(dest.ScoreValue);
 
-                    if (dest is SpaceShip)
+                    if (dest is AirShip)
                     {
                         if (dest.HitPoints <= 0)
                             Player.Instance.AddKill();

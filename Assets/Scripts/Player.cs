@@ -2,18 +2,18 @@ using UnityEngine;
 
     public class Player : SingletonBase<Player>
     {
-        public static SpaceShip SelectedSpaceShip;
+        public static AirShip SelectedSpaceShip;
         
         [SerializeField] private int m_NumLives;
         
-        [SerializeField] private SpaceShip m_PlayerShipPrefab;
+        [SerializeField] private AirShip m_PlayerShipPrefab;
 
-        public SpaceShip ActiveShip => m_Ship;
+        public AirShip ActiveShip => m_Ship;
 
         [SerializeField] private CameraController m_CameraController;
         [SerializeField] private MovementController m_MovementController;
 
-        private SpaceShip m_Ship;
+        private AirShip m_Ship;
 
         private int m_Score;
         private int m_NumKills;
@@ -22,7 +22,7 @@ using UnityEngine;
         public int NumKills => m_NumKills;
         public int NumLives => m_NumLives;
 
-        public SpaceShip ShipPrefab
+        public AirShip ShipPrefab
         {
             get
             {
@@ -54,7 +54,7 @@ using UnityEngine;
         {
             var newPlayerShip = Instantiate(m_PlayerShipPrefab);
 
-            m_Ship = newPlayerShip.GetComponent<SpaceShip>();
+            m_Ship = newPlayerShip.GetComponent<AirShip>();
 
             m_Ship.EventOnDeath.AddListener(OnShipDeath);
 
