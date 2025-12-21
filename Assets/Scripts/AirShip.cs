@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 
     [RequireComponent(typeof(Rigidbody2D))]
-    public class SpaceShip : Destructible
+    public class AirShip : Destructible
     {
         [SerializeField] private Sprite m_PreviewImage;
           
-        [Header("Space ship")]
+        [Header("Air ship")]
         [SerializeField] private float m_Mass;
 
         

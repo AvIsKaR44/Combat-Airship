@@ -10,7 +10,7 @@ using UnityEngine;
         }
 
         [SerializeField] private ControlMode m_ControlMode;
-        [SerializeField] private SpaceShip m_TargetShip;
+        [SerializeField] private AirShip m_TargetShip;
         [SerializeField] private VirtualJoystick m_MobileJoystick;
         [SerializeField] private PointerClickHold m_MobileFirePrimary;
         [SerializeField] private PointerClickHold m_MobileFireSecondary;
@@ -23,7 +23,7 @@ using UnityEngine;
         private void Start()
         {
             if (m_TargetShip == null)
-                m_TargetShip = GetComponent<SpaceShip>();
+                m_TargetShip = GetComponent<AirShip>();
 
             // Активация джойстика с проверкой на null
             if (m_MobileJoystick != null)
@@ -126,7 +126,7 @@ using UnityEngine;
             return (thrust, torque);
         }
 
-        public void SetTargetShip(SpaceShip ship)
+        public void SetTargetShip(AirShip ship)
         {
             m_TargetShip = ship;
         }

@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u041A\u0430\u043F\u0438\u0442\u0430\u043D_0"
+      name: RoyalCommander
       rect:
         serializedVersion: 2
         x: 0
@@ -147,7 +147,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9eef090a5daf5804abcd8d71578fee8d
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u041A\u0430\u043F\u0438\u0442\u0430\u043D_0": -3685278499916445645
+      RoyalCommander: -3685278499916445645
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,11 +12,11 @@ public class Turret : MonoBehaviour
 
     public bool CanFire => m_RefireTimer <= 0;
 
-    private SpaceShip m_Ship;
+    private AirShip m_Ship;
 
     private void Start()
     {
-        m_Ship = transform.root.GetComponent<SpaceShip>();
+        m_Ship = transform.root.GetComponent<AirShip>();
     }
 
     private void Update()

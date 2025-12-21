@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0414\u0438\u0440\u0438\u0436\u0430\u0431\u043B\u044C 2_0"
+      name: AirShip
       rect:
         serializedVersion: 2
         x: 2
@@ -147,7 +147,7 @@ TextureImporter:
         width: 125
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 487a9f334d7f51e45964003f5c90981c
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u0414\u0438\u0440\u0438\u0436\u0430\u0431\u043B\u044C 2_0": 135335446875795048
+      AirShip: 135335446875795048
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
