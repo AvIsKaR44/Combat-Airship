@@ -4933,7 +4933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ed1686c6ed43443a48701c9af06c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interactable: 0
+  Interactable: 1
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7314,7 +7314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ed1686c6ed43443a48701c9af06c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interactable: 0
+  Interactable: 1
   OnClick:
     m_PersistentCalls:
       m_Calls:
