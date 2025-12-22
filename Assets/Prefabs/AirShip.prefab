@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Mode: 1
-  m_TurretProperties: {fileID: 0}
+  m_TurretProperties: {fileID: 11400000, guid: 35a4b3d3c3ba01e46bf9c89ec52449d4, type: 2}
 --- !u!1 &4866034729695276062
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Mode: 0
-  m_TurretProperties: {fileID: 0}
+  m_TurretProperties: {fileID: 11400000, guid: 561833b9681cf374595acb15bb6d748a, type: 2}
 --- !u!1 &9111644452522072451
 GameObject:
   m_ObjectHideFlags: 0

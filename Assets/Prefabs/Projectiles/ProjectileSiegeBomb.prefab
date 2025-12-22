@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2980811030120630325}
-  - component: {fileID: 1103028734454593579}
+  - component: {fileID: 1234035659084059073}
   - component: {fileID: 8111926846485585403}
   m_Layer: 0
-  m_Name: ProjectileArtileryCore
+  m_Name: ProjectileSiegeBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 1728252433835907207}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1103028734454593579
+--- !u!114 &1234035659084059073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,13 +43,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 5192913315553179150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5d2075c8ae8c84797704f5775ec4ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d7ae7014e205694e8c56cbd293a9f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Velocity: 5
-  m_Lifetime: 100
-  m_Damage: 20
+  m_Lifetime: 3
+  m_Damage: 50
   m_ImpactEffectPrefab: {fileID: 0}
+  activationDelay: 0.3
+  armingTime: 0.5
+  maxLifetime: 10
+  gravityScale: 2
+  initialDownwardForce: 3
+  maxFallSpeed: 12
+  explosionPrefab: {fileID: 0}
+  explosionRadius: 4
+  useFalloff: 1
+  minDamageMultiplier: 0.3
+  explodeOnGroundHit: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  smokeTrail: {fileID: 0}
+  trailActivationDelay: 0.2
+  fallWhistle: {fileID: 0}
+  explosionSound: {fileID: 0}
 --- !u!82 &8111926846485585403
 AudioSource:
   m_ObjectHideFlags: 0
@@ -223,7 +241,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2445827491040647011, guid: ce074a4280cc58842b61399d7c663f21, type: 3}
+  m_Sprite: {fileID: -7860631004235539910, guid: 538ae9d560cccef4cb21dfce1c6ab925, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
