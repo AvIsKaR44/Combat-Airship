@@ -1,75 +1,83 @@
 using UnityEngine;
 
-    public class Player : SingletonBase<Player>
+public class Player : SingletonBase<Player>
+{
+    public static AirShip SelectedSpaceShip;
+        
+    [SerializeField] private int m_NumLives;
+        
+    [SerializeField] private AirShip m_PlayerShipPrefab;
+
+    public AirShip ActiveShip => m_Ship;
+
+    private CameraController m_CameraController;
+    private MovementController m_MovementController;
+    private Transform m_SpawnPoint;
+
+    public void Construct(CameraController cameraController, MovementController movementController, Transform spawnPoint)
     {
-        public static AirShip SelectedSpaceShip;
-        
-        [SerializeField] private int m_NumLives;
-        
-        [SerializeField] private AirShip m_PlayerShipPrefab;
+        m_CameraController = cameraController; 
+        m_MovementController = movementController;
+        m_SpawnPoint = spawnPoint;
+    }
 
-        public AirShip ActiveShip => m_Ship;
+    private AirShip m_Ship;
 
-        [SerializeField] private CameraController m_CameraController;
-        [SerializeField] private MovementController m_MovementController;
+    private int m_Score;
+    private int m_NumKills;
 
-        private AirShip m_Ship;
+    public int Score => m_Score;
+    public int NumKills => m_NumKills;
+    public int NumLives => m_NumLives;
 
-        private int m_Score;
-        private int m_NumKills;
-
-        public int Score => m_Score;
-        public int NumKills => m_NumKills;
-        public int NumLives => m_NumLives;
-
-        public AirShip ShipPrefab
+    public AirShip ShipPrefab
+    {
+        get
         {
-            get
+            if(SelectedSpaceShip == null)
             {
-                if(SelectedSpaceShip == null)
-                {
-                    return m_PlayerShipPrefab;
-                }
-                else
-                {
-                    return SelectedSpaceShip;
-                }
+                return m_PlayerShipPrefab;
+            }
+            else
+            {
+                return SelectedSpaceShip;
             }
         }
-
-        private void Start()
-        {
-            Respawn();
-        }
-
-        private void OnShipDeath()
-        {
-            m_NumLives--;
-
-            if (m_NumLives > 0)
-                Respawn();
-        }
-
-        private void Respawn()
-        {
-            var newPlayerShip = Instantiate(m_PlayerShipPrefab);
-
-            m_Ship = newPlayerShip.GetComponent<AirShip>();
-
-            m_Ship.EventOnDeath.AddListener(OnShipDeath);
-
-            m_CameraController.SetTarget(m_Ship.transform);
-            m_MovementController.SetTargetShip(m_Ship);
-        }
-
-        public void AddKill()
-        {
-            m_NumKills += 1;
-        }
-
-        public void AddScore(int num)
-        {
-            m_Score += num;
-        }
     }
+
+    private void Start()
+    {
+        Respawn();
+    }
+
+    private void OnShipDeath()
+    {
+        m_NumLives--;
+
+        if (m_NumLives > 0)
+            Respawn();
+    }
+
+    private void Respawn()
+    {
+        var newPlayerShip = Instantiate(m_PlayerShipPrefab);
+
+        m_Ship = newPlayerShip.GetComponent<AirShip>();
+
+        m_Ship.EventOnDeath.AddListener(OnShipDeath);
+
+        m_CameraController.SetTarget(m_Ship.transform);
+        m_MovementController.SetTargetShip(m_Ship);
+    }
+
+    public void AddKill()
+    {
+        m_NumKills += 1;
+    }
+
+    public void AddScore(int num)
+    {
+        m_Score += num;
+    }
+}
 
