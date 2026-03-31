@@ -3,9 +3,7 @@ using UnityEngine;
 public enum TurretMode
 {
     Primary,
-    Secondary,
-    IceShot,
-    FireShot
+    Secondary
 }
 
 [CreateAssetMenu]
@@ -20,11 +18,11 @@ public class TurretProperties : ScriptableObject
     [SerializeField] private float m_RateOfFire;
     public float RateOfFire => m_RateOfFire;
 
-    [SerializeField] private int m_EnergyUsage;
-    public int EnergyUsage => m_EnergyUsage;
+    [SerializeField] private int m_UsagePrimaryAmmo;
+    public int UsagePrimaryAmmo => m_UsagePrimaryAmmo;
 
-    [SerializeField] private int m_AmmoUsage;
-    public int AmmoUsage => m_AmmoUsage;
+    [SerializeField] private int m_UsageSecondaryAmmo;
+    public int UsageSecondaryAmmo => m_UsageSecondaryAmmo;
 
     [SerializeField] private AudioClip m_LaunchSFX;
     public AudioClip LaunchSFX => m_LaunchSFX;

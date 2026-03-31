@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+
 
 public class Player : SingletonBase<Player>
 {
@@ -13,6 +15,8 @@ public class Player : SingletonBase<Player>
     private CameraController m_CameraController;
     private MovementController m_MovementController;
     private Transform m_SpawnPoint;
+
+    public CameraController CameraController => m_CameraController;
 
     public void Construct(CameraController cameraController, MovementController movementController, Transform spawnPoint)
     {
@@ -60,7 +64,7 @@ public class Player : SingletonBase<Player>
 
     private void Respawn()
     {
-        var newPlayerShip = Instantiate(m_PlayerShipPrefab);
+        var newPlayerShip = Instantiate(ShipPrefab);
 
         m_Ship = newPlayerShip.GetComponent<AirShip>();
 
@@ -78,6 +82,6 @@ public class Player : SingletonBase<Player>
     public void AddScore(int num)
     {
         m_Score += num;
-    }
+    }       
 }
 

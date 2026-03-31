@@ -162,6 +162,14 @@ public class MovementController : MonoBehaviour
         m_TargetShip.ThrustControl = currentVertical;
     }
 
+    private void LateUpdate()
+    {
+        if (LevelBoundary.Instance != null)
+        {
+            transform.position = LevelBoundary.Instance.ClampPosition(transform.position);
+        }
+    }
+
     private void GetDesktopInput()
     {
         if (m_TargetShip == null) return;
@@ -174,7 +182,7 @@ public class MovementController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
             m_TargetShip.Fire(TurretMode.Primary);
 
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKey(KeyCode.B))
             m_TargetShip.Fire(TurretMode.Secondary);
     }
 
