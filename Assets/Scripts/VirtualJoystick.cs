@@ -1,19 +1,20 @@
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 
 public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     [SerializeField] private Image m_JoyBack;
     [SerializeField] private Image m_JoyStick;
-        
+
     public Vector3 Value { get; private set; }
-        
+
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 position = Vector2.zero;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(m_JoyBack.rectTransform, 
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(m_JoyBack.rectTransform,
             eventData.position, eventData.pressEventCamera, out position);
 
         position.x = (position.x / m_JoyBack.rectTransform.sizeDelta.x);
@@ -44,5 +45,4 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         m_JoyStick.rectTransform.anchoredPosition = Vector3.zero;
     }
 }
-
 

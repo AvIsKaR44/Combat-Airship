@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2361735991342756072}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.09, y: -0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Mode: 1
-  m_TurretProperties: {fileID: 0}
+  m_TurretProperties: {fileID: 11400000, guid: 35a4b3d3c3ba01e46bf9c89ec52449d4, type: 2}
 --- !u!1 &4866034729695276062
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 1.7, y: 1}
+  m_Size: {x: 3, y: 1.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -169,7 +169,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.7, y: 1}
+  m_Size: {x: 3, y: 1.7}
   m_Direction: 1
 --- !u!1 &7150441887095025880
 GameObject:
@@ -197,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 7150441887095025880}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.99, y: -0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Mode: 0
-  m_TurretProperties: {fileID: 0}
+  m_TurretProperties: {fileID: 11400000, guid: 561833b9681cf374595acb15bb6d748a, type: 2}
 --- !u!1 &9111644452522072451
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,9 +299,12 @@ MonoBehaviour:
   m_EventOnDeath:
     m_PersistentCalls:
       m_Calls: []
-  m_ScoreValue: 0
+  m_ScoreValue: 1
   m_PreviewImage: {fileID: 135335446875795048, guid: 8a9731263af207d40a98917e94cbb1f3, type: 3}
   m_Mass: 1
+  m_MaxPrimaryAmmo: 50
+  m_MaxSecondaryAmmo: 10
+  m_ReloadingPrimaryAmmo: 5
   m_Thrust: 10
   m_Mobility: 20
   m_MaxLinearVelocity: 10
@@ -310,7 +313,6 @@ MonoBehaviour:
   m_ShieldEffect: {fileID: 0}
   m_ShieldEffectScale: 1.5
   m_DefaultProjectileSpeed: 15
-  m_Turrets: []
-  m_MaxEnergy: 0
-  m_MaxAmmo: 0
-  m_EnergyRegenPerSecond: 0
+  m_Turrets:
+  - {fileID: 517781628019839109}
+  - {fileID: 6842177954779553183}

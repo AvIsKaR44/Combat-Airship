@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-    [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))]
     public class AirShip : Destructible
     {
         [SerializeField] private Sprite m_PreviewImage;
@@ -9,21 +9,25 @@ using System.Collections;
         [Header("Air ship")]
         [SerializeField] private float m_Mass;
 
-        
-        [SerializeField] private float m_Thrust;
+        [SerializeField] private int m_MaxPrimaryAmmo;
 
+        [SerializeField] private int m_MaxSecondaryAmmo;
+
+        [SerializeField] private int m_ReloadingPrimaryAmmo;
+
+        [SerializeField] private float m_Thrust;
         
         [SerializeField] private float m_Mobility;
-
         
         [SerializeField] private float m_MaxLinearVelocity;
-
         
         [SerializeField] private float m_MaxAngularVelocity;
 
         [Header("VFX Settings")]
-        [SerializeField] private ParticleSystem m_ExplosionEffect; 
-
+        [SerializeField] private ParticleSystem m_ExplosionEffect;
+       
+        private float m_PrimaryAmmo;
+        private float m_SecondaryAmmo;
         private Rigidbody2D m_Rigid;
 
         public float MaxLianerVelocity => m_MaxLinearVelocity;
@@ -155,7 +159,7 @@ using System.Collections;
         {
             UpdateRigidBody();
 
-            UpdateEnergyRegen();
+            UpdateReloadingPrimaryAmmo();
         }
 
         #endregion
@@ -233,51 +237,44 @@ using System.Collections;
                     m_Turrets[i].Fire();
                 }
             }
+        }       
+
+        public void AddPrimaryAmmo(int e)
+        {
+            m_PrimaryAmmo = Mathf.Clamp(m_PrimaryAmmo + e, 0, m_MaxPrimaryAmmo);
         }
 
-        [SerializeField] private int m_MaxEnergy;
-        [SerializeField] private int m_MaxAmmo;
-        [SerializeField] private int m_EnergyRegenPerSecond;
-
-        private float m_PrimaryEnergy;
-        private float m_SecondaryAmmo;
-
-        public void AddEnergy(int e)
+        public void AddSecondaryAmmo(int ammo)
         {
-            m_PrimaryEnergy = Mathf.Clamp(m_PrimaryEnergy + e, 0, m_MaxEnergy);
-        }
-
-        public void AddAmmo(int ammo)
-        {
-            m_SecondaryAmmo = Mathf.Clamp(m_SecondaryAmmo + ammo, 0, m_MaxAmmo);
+            m_SecondaryAmmo = Mathf.Clamp(m_SecondaryAmmo + ammo, 0, m_MaxSecondaryAmmo);
         }
 
         private void InitOffensive()
         {
-            m_PrimaryEnergy = m_MaxEnergy;
-            m_SecondaryAmmo = m_MaxAmmo;
+            m_PrimaryAmmo = m_MaxPrimaryAmmo;
+            m_SecondaryAmmo = m_MaxSecondaryAmmo;
         }
 
-        private void UpdateEnergyRegen()
+        private void UpdateReloadingPrimaryAmmo()
         {
-            m_PrimaryEnergy += (float)m_EnergyRegenPerSecond * Time.fixedDeltaTime;
-            m_PrimaryEnergy = Mathf.Clamp(m_PrimaryEnergy, 0, m_MaxEnergy);
+            m_PrimaryAmmo += (float)m_ReloadingPrimaryAmmo * Time.fixedDeltaTime;
+            m_PrimaryAmmo = Mathf.Clamp(m_PrimaryAmmo, 0, m_MaxPrimaryAmmo);
         }
 
-        public bool DrawEnergy(int count)
+        public bool DrawPrimaryAmmo(int count)
         {
             if (count == 0) return true;
 
-            if (m_PrimaryEnergy >= count)
+            if (m_PrimaryAmmo >= count)
             {
-                m_PrimaryEnergy -= count;
+                m_PrimaryAmmo -= count;
                 return true;
             }
 
             return false;
         }
 
-        public bool DrawAmmo(int count)
+        public bool DrawSecondaryAmmo(int count)
         {
             if (count == 0) return true;
 
