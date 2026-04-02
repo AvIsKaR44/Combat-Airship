@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LevelBoundary : MonoBehaviour
+public class ZoneDialogueTrigger : MonoBehaviour
 {
     [SerializeField] private string playerTag = "Player";
     [SerializeField] private Dialogue nextAreaDialogue;
@@ -11,7 +11,7 @@ public class LevelBoundary : MonoBehaviour
     {
         if (!other.CompareTag(playerTag)) return;
 
-        if (showDebug) Debug.Log($"[LevelBoundary] Player entered boundary: {gameObject.name}");
+        if (showDebug) Debug.Log($"[ZoneDialogueTrigger] Player entered boundary: {gameObject.name}");
 
         // «апускаем диалог дл€ следующей области
         if (nextAreaDialogue != null)
@@ -66,7 +66,7 @@ public class LevelBoundary : MonoBehaviour
 
         GUIStyle style = new GUIStyle();
         style.normal.textColor = Color.green;
-        UnityEditor.Handles.Label(transform.position, $"Level Boundary\nNext Dialogue: {nextAreaDialogue?.name ?? "None"}", style);
+        UnityEditor.Handles.Label(transform.position, $"ZoneDialogueTrigger\nNext Dialogue: {nextAreaDialogue?.name ?? "None"}", style);
     }
 #endif
 }
