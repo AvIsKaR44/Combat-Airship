@@ -36,7 +36,7 @@ public class Turret : MonoBehaviour
         if (m_Ship.DrawSecondaryAmmo(m_TurretProperties.UsageSecondaryAmmo) == false) return;
 
         Projectile projectile = Instantiate(m_TurretProperties.ProjectilePrefab).GetComponent<Projectile>();
-        projectile.transform.position = transform.position + transform.up * 0.2f;
+        projectile.transform.position = transform.position + transform.up * 0.3f;
 
         projectile.transform.up = transform.up;
         projectile.SetParentShooter(m_Ship);
