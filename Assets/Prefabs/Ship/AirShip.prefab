@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2361735991342756072}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -0.81, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: -0.066, y: -0.834, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2028057986116658114}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
 --- !u!114 &6842177954779553183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,13 +196,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7150441887095025880}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.99, y: -0.65, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 1.068, y: -0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2028057986116658114}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &517781628019839109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,10 +305,10 @@ MonoBehaviour:
   m_MaxPrimaryAmmo: 50
   m_MaxSecondaryAmmo: 10
   m_ReloadingPrimaryAmmo: 5
-  m_Thrust: 10
-  m_Mobility: 20
+  m_Thrust: 5
+  m_Mobility: 6
   m_MaxLinearVelocity: 10
-  m_MaxAngularVelocity: 180
+  m_MaxAngularVelocity: 15
   m_ExplosionEffect: {fileID: 0}
   m_ShieldEffect: {fileID: 0}
   m_ShieldEffectScale: 1.5

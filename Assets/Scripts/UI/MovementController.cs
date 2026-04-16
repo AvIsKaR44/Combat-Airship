@@ -12,35 +12,26 @@ public class MovementController : MonoBehaviour
     [SerializeField] private ControlMode m_ControlMode;
 
     [Header("AirShip movement")]
-    [SerializeField] private float m_ForwardThrust = 8f;        // Сила вперед
-    [SerializeField] private float m_BackwardThrust = 4f;       // Сила назад
-    [SerializeField] private float m_VerticalThrust = 5f;       // Сила вертикали
-    [SerializeField] private float m_MaxForwardSpeed = 8f;      // Макс скорость вперед
-    [SerializeField] private float m_MaxBackwardSpeed = 4f;      // Макс скорость назад
-    [SerializeField] private float m_BuoyancyForce = 5f;        // Подъемная сила
-
-    [Header("Roll of the AirShip")]
-    [SerializeField] private float m_MaxTiltAngle = 15f;        // Макс угол крена
-    [SerializeField] private float m_TiltSpeed = 5f;            // Скорость крена
-    [SerializeField] private float m_TiltOnForward = 3f;        // Крен при движении вперед
-    [SerializeField] private float m_TiltOnBackward = 5f;       // Крен при движении назад
-    [SerializeField] private float m_TiltOnVertical = 10f;      // Крен при подъеме/спуске
+    [SerializeField] private float m_ForwardThrust = 8f;
+    [SerializeField] private float m_BackwardThrust = 4f;
+    [SerializeField] private float m_VerticalThrust = 5f;
+    [SerializeField] private float m_MaxForwardSpeed = 8f;
+    [SerializeField] private float m_MaxBackwardSpeed = 4f;
+    [SerializeField] private float m_BuoyancyForce = 5f;
 
     [Header("Inertion")]
-    [SerializeField] private float m_ThrustSmooth = 2f;         // Плавность горизонтали 
-    [SerializeField] private float m_VerticalSmooth = 2f;       // Плавность вертикали
-    [SerializeField] private float m_AirResistance = 0.98f;     // Сопротивление воздуха 
+    [SerializeField] private float m_ThrustSmooth = 2f;
+    [SerializeField] private float m_VerticalSmooth = 2f;
+    [SerializeField] private float m_AirResistance = 0.98f;
 
     private AirShip m_TargetShip;
     private VirtualGamePad m_VirtualGamePad;
     private Rigidbody2D m_Rigidbody2D;
-    private Transform m_ShipVisual;
 
     private float currentHorizontal;
     private float currentVertical;
     private float targetHorizontal;
     private float targetVertical;
-    private float currentTilt;
 
     public void Construct(VirtualGamePad virtualGamePad)
     {
@@ -53,102 +44,73 @@ public class MovementController : MonoBehaviour
             m_TargetShip = GetComponent<AirShip>();
 
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
-        
-        if(transform.childCount > 0)
-            m_ShipVisual = transform.GetChild(0);
-        else
-            m_ShipVisual = transform;
 
-        if(m_Rigidbody2D != null)
+        if (m_Rigidbody2D != null)
         {
             m_Rigidbody2D.gravityScale = 1f;
             m_Rigidbody2D.linearDamping = 0.5f;
             m_Rigidbody2D.angularDamping = 0f;
             m_Rigidbody2D.mass = 5f;
-            m_Rigidbody2D.freezeRotation = true;
+            m_Rigidbody2D.freezeRotation = true; // Вращение только через TorqueControl
         }
-          
-        // Активация джойстика с проверкой на null
+
+        // Активация джойстика
         if (m_VirtualGamePad != null)
         {
             if (m_VirtualGamePad.VirtualJoystick != null)
             {
                 m_VirtualGamePad.VirtualJoystick.gameObject.SetActive(
                     m_ControlMode == ControlMode.Mobile ||
-                    m_ControlMode == ControlMode.Both
-                    );
+                    m_ControlMode == ControlMode.Both);
             }
 
             SetMobileButtonActive(m_VirtualGamePad.MobileFirePrimary);
             SetMobileButtonActive(m_VirtualGamePad.MobileFireSecondary);
         }
 
-        targetHorizontal = 1f;
-        currentHorizontal = 1f;
+        targetHorizontal = 0f;
+        currentHorizontal = 0f;
+        targetVertical = 0f;
+        currentVertical = 0f;
     }
 
     private void Update()
     {
         // Получаем ввод
-        if (m_ControlMode == ControlMode.Desktop)
+        switch (m_ControlMode)
         {
-            GetDesktopInput();
+            case ControlMode.Desktop:
+                GetDesktopInput();
+                break;
+            case ControlMode.Mobile:
+                GetMobileInput();
+                break;
+            case ControlMode.Both:
+                GetDesktopInput();
+                GetMobileInput();
+                break;
         }
-        else if (m_ControlMode == ControlMode.Mobile)
-        {
-            GetMobileInput();
-        }
-        else if (m_ControlMode == ControlMode.Both)
-        {
-            GetDesktopInput();
-            GetMobileInput();
-        }
+
         // Плавная интерполяция
         currentHorizontal = Mathf.Lerp(currentHorizontal, targetHorizontal, Time.deltaTime * m_ThrustSmooth);
         currentVertical = Mathf.Lerp(currentVertical, targetVertical, Time.deltaTime * m_VerticalSmooth);
-
-        // Расчет крена (спрайт направлен вправо по движению вперед)
-        float targetTilt = 0f;
-
-        // Крен от вертикали (подъем/спуск)
-        targetTilt += -targetVertical * m_TiltOnVertical;
-
-        // Крен от горизонтали (вперед/назад)
-        if (targetHorizontal < 0) // Движение назад
-            targetTilt += m_TiltOnBackward;
-        else if (targetHorizontal > 0) // Движение вперед
-            targetTilt += -m_TiltOnForward;
-
-        // Ограничение максимального крена
-        targetTilt = Mathf.Clamp(targetTilt, -m_MaxTiltAngle, m_MaxTiltAngle);
-
-        // Плавно применяем крен
-        currentTilt = Mathf.Lerp(currentTilt, targetTilt, Time.deltaTime * m_TiltSpeed);
-
-        // Применяем визуальный крен
-        if (m_ShipVisual != null)
-        {
-            m_ShipVisual.localEulerAngles = new Vector3 (0, 0, currentTilt);
-        }
     }
 
     private void FixedUpdate()
     {
         if (m_TargetShip == null || m_Rigidbody2D == null) return;
 
-        // Подъемная сила
+        // Подъемная сила (компенсация гравитации)
         m_Rigidbody2D.AddForce(Vector2.up * m_BuoyancyForce, ForceMode2D.Force);
 
-        // Горизонтальное движение с разной силой для вперед/назад
+        // Горизонтальное движение
         float currentThrust = currentHorizontal > 0 ? m_ForwardThrust : m_BackwardThrust;
-        Vector2 horizontalForce = Vector2.right * (currentHorizontal * currentThrust);
-        m_Rigidbody2D.AddForce(horizontalForce, ForceMode2D.Force);
+        m_Rigidbody2D.AddForce(Vector2.right * (currentHorizontal * currentThrust), ForceMode2D.Force);
 
         // Вертикальное движение
-        Vector2 verticalForce = Vector2.up * (currentVertical * m_VerticalThrust);
-        m_Rigidbody2D.AddForce(verticalForce, ForceMode2D.Force);
+        m_Rigidbody2D.AddForce(Vector2.up * (currentVertical * m_VerticalThrust), ForceMode2D.Force);
 
-        // Ограничение скорости (разное для вперед/назад)
+        // Ограничение скорости
         float maxSpeedX = currentHorizontal > 0 ? m_MaxForwardSpeed : m_MaxBackwardSpeed;
         Vector2 velocity = m_Rigidbody2D.linearVelocity;
         velocity.x = Mathf.Clamp(velocity.x, -maxSpeedX, maxSpeedX);
@@ -158,12 +120,20 @@ public class MovementController : MonoBehaviour
         // Сопротивление воздуха
         m_Rigidbody2D.linearVelocity *= m_AirResistance;
 
+        // Границы уровня
+        if (LevelBoundary.Instance != null)
+        {
+            m_Rigidbody2D.position = LevelBoundary.Instance.ClampPosition(m_Rigidbody2D.position);
+        }
+
+        // Передаём управление в AirShip
         m_TargetShip.ThrustControl = currentHorizontal;
-        m_TargetShip.ThrustControl = currentVertical;
+        m_TargetShip.TorqueControl = currentVertical; // Крен при подъёме/спуске
     }
 
     private void LateUpdate()
     {
+        // Дополнительная защита от выхода за границы (трансформ)
         if (LevelBoundary.Instance != null)
         {
             transform.position = LevelBoundary.Instance.ClampPosition(transform.position);
@@ -174,11 +144,9 @@ public class MovementController : MonoBehaviour
     {
         if (m_TargetShip == null) return;
 
-        // Управление движением
         targetHorizontal = Input.GetAxisRaw("Horizontal");
         targetVertical = Input.GetAxisRaw("Vertical");
 
-        // Стрельба
         if (Input.GetKey(KeyCode.Space))
             m_TargetShip.Fire(TurretMode.Primary);
 
@@ -188,7 +156,6 @@ public class MovementController : MonoBehaviour
 
     private void GetMobileInput()
     {
-        // Безопасное получение направления джойстика
         Vector3 dir = m_VirtualGamePad?.VirtualJoystick?.Value ?? Vector3.zero;
 
         if (m_TargetShip != null)
@@ -197,7 +164,6 @@ public class MovementController : MonoBehaviour
             targetVertical = dir.y;
         }
 
-        // Обработка стрельбы с проверкой на null
         if (m_VirtualGamePad?.MobileFirePrimary?.IsHold == true)
             m_TargetShip?.Fire(TurretMode.Primary);
 
@@ -211,15 +177,14 @@ public class MovementController : MonoBehaviour
         {
             button.gameObject.SetActive(
                 m_ControlMode == ControlMode.Mobile ||
-                m_ControlMode == ControlMode.Both
-            );
+                m_ControlMode == ControlMode.Both);
         }
     }
 
     public void SetTargetShip(AirShip ship)
     {
         m_TargetShip = ship;
-        if (m_TargetShip != null) 
+        if (m_TargetShip != null)
             m_Rigidbody2D = m_TargetShip.GetComponent<Rigidbody2D>();
     }
 }

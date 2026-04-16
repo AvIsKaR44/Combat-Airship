@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -12,8 +13,34 @@ public class Projectile : MonoBehaviour
 
     protected float m_Timer;
         
+    protected virtual void Start()
+    {
+        if (m_Parent != null)
+        {
+            Collider2D parentCollider = m_Parent.GetComponent<Collider2D>();
+            Collider2D myCollider = GetComponent<Collider2D>();
 
+            if (parentCollider != null && myCollider != null)
+            {
+                Physics2D.IgnoreCollision(myCollider, parentCollider, true);
+                StartCoroutine(EnableCollisionAfterDelay(0.2f));
+            }
+        }
+    }
 
+    private IEnumerator EnableCollisionAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (m_Parent != null)
+        {
+            Collider2D parentCollider = m_Parent.GetComponent<Collider2D>();
+            Collider2D myCollider = GetComponent<Collider2D>();
+            if (parentCollider != null && myCollider != null)
+            {
+                Physics2D.IgnoreCollision(myCollider, parentCollider, false);
+            }
+        }
+    }
 
     protected virtual void Update()
     {

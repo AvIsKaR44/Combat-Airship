@@ -38,8 +38,10 @@ public class SimpleBomb : Projectile
     private float lifeTimer = 0f;
     private AudioSource audioSource;
 
-    private void Start()
+    private new void Start()
     {
+        base.Start();
+
         rb = GetComponent<Rigidbody2D>();
         bombCollider = GetComponent<Collider2D>();
         audioSource = GetComponent<AudioSource>();
