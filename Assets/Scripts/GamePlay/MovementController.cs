@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class MovementController : MonoBehaviour
 {
@@ -162,6 +163,7 @@ public class MovementController : MonoBehaviour
         {
             targetHorizontal = dir.x;
             targetVertical = dir.y;
+
         }
 
         if (m_VirtualGamePad?.MobileFirePrimary?.IsHold == true)

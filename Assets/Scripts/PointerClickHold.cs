@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+
+
 
 public class PointerClickHold : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -15,7 +16,7 @@ public class PointerClickHold : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        m_Hold= false;
     }
 }
 

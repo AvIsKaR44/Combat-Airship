@@ -44,19 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c3c159d863df6408b29ef53bcef485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlMode: 0
-  m_ShipVisual: {fileID: 2028057986116658114, guid: 98671d3c8fc3515438668840dc233b1e, type: 3}
+  m_ControlMode: 1
   m_ForwardThrust: 4
   m_BackwardThrust: 1
   m_VerticalThrust: 2
   m_MaxForwardSpeed: 2
   m_MaxBackwardSpeed: 1
   m_BuoyancyForce: 0.01
-  m_MaxTiltAngle: 15
-  m_TiltSpeed: 8
-  m_TiltOnVertical: 10
-  m_TiltOnBackward: 5
-  m_TiltOnForward: 5
   m_ThrustSmooth: 6
   m_VerticalSmooth: 6
   m_AirResistance: 0.98
