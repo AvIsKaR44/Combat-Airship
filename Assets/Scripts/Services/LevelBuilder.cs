@@ -26,6 +26,6 @@ public class LevelBuilder : MonoBehaviour
         Instantiate(m_LevelGUIPrefab);
 
         GameObject background = Instantiate(m_BackgroundPrefab);
-        background.AddComponent<SyncTransform>().SetTarget(player.CameraController.transform);
+        //background.AddComponent<SyncTransform>().SetTarget(player.CameraController.transform);
     }
 }
