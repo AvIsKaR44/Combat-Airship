@@ -1069,6 +1069,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6094865372889403555, guid: 114ffbe20b2863543b556a89fd1e3dca, type: 3}
+      propertyPath: showDebug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7802454509476037936, guid: 114ffbe20b2863543b556a89fd1e3dca, type: 3}
       propertyPath: m_Name
       value: ZoneDialogueTrigger
