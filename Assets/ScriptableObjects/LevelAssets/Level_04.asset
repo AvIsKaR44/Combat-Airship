@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf65027251f69934e94cb57436947b0f, type: 3}
-  m_Name: GameMap
+  m_Script: {fileID: 11500000, guid: 47ae785880d97b549bd34864777a5c64, type: 3}
+  m_Name: Level_04
   m_EditorClassIdentifier: 
-  sceneName: Level_01
-  icon: {fileID: -1955448553306655712, guid: 639aba0bfeace5b4ba6f51d14d2fe3a5, type: 3}
-  title: Level 1
+  m_Title: Level 4
+  m_SceneName: Level_04
+  m_PreviewImage: {fileID: -1955448553306655712, guid: 639aba0bfeace5b4ba6f51d14d2fe3a5, type: 3}
+  m_NextLevel: {fileID: 0}

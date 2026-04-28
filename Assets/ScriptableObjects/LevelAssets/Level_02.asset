@@ -15,4 +15,4 @@ MonoBehaviour:
   m_Title: Level 2
   m_SceneName: Level_02
   m_PreviewImage: {fileID: -1955448553306655712, guid: 639aba0bfeace5b4ba6f51d14d2fe3a5, type: 3}
-  m_NextLevel: {fileID: 0}
+  m_NextLevel: {fileID: 11400000, guid: b75e58d8a29be0d47b170ed4cc20a662, type: 2}
