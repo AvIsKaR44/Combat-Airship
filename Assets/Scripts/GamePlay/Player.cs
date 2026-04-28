@@ -1,26 +1,22 @@
-using System;
+using Unity.Cinemachine;
 using UnityEngine;
 
 
 public class Player : SingletonBase<Player>
 {
-    public static AirShip SelectedSpaceShip;
-        
+    public static AirShip SelectedAirShip;
+
     [SerializeField] private int m_NumLives;
-        
+
     [SerializeField] private AirShip m_PlayerShipPrefab;
 
     public AirShip ActiveShip => m_Ship;
 
-    private CameraController m_CameraController;
     private MovementController m_MovementController;
     private Transform m_SpawnPoint;
 
-    public CameraController CameraController => m_CameraController;
-
-    public void Construct(CameraController cameraController, MovementController movementController, Transform spawnPoint)
+    public void Construct(MovementController movementController, Transform spawnPoint)
     {
-        m_CameraController = cameraController; 
         m_MovementController = movementController;
         m_SpawnPoint = spawnPoint;
     }
@@ -38,13 +34,13 @@ public class Player : SingletonBase<Player>
     {
         get
         {
-            if(SelectedSpaceShip == null)
+            if (SelectedAirShip == null)
             {
                 return m_PlayerShipPrefab;
             }
             else
             {
-                return SelectedSpaceShip;
+                return SelectedAirShip;
             }
         }
     }
@@ -70,8 +66,19 @@ public class Player : SingletonBase<Player>
 
         m_Ship.EventOnDeath.AddListener(OnShipDeath);
 
-        m_CameraController.SetTarget(m_Ship.transform);
         m_MovementController.SetTargetShip(m_Ship);
+
+        UpdateCinemachineCamera();
+    }
+
+    private void UpdateCinemachineCamera()
+    {
+        var virtualCamera = FindFirstObjectByType<CinemachineVirtualCameraBase>();
+
+        if (virtualCamera != null)
+        {
+            virtualCamera.Follow = m_Ship.transform;
+        }
     }
 
     public void AddKill()
@@ -82,6 +89,6 @@ public class Player : SingletonBase<Player>
     public void AddScore(int num)
     {
         m_Score += num;
-    }       
+    }
 }
 
